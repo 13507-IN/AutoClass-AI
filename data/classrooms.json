@@ -14,6 +14,60 @@
         "title": "DBMS Homework",
         "description": "Explain normalization forms",
         "dueDate": "2026-02-25"
+      },
+      {
+        "id": 3,
+        "title": "Algorithm Lab Report",
+        "description": "Compare time complexity for searching algorithms",
+        "dueDate": "2026-03-02"
+      }
+    ]
+  },
+  {
+    "classroomCode": "ECE202",
+    "className": "Digital Systems",
+    "assignments": [
+      {
+        "id": 4,
+        "title": "Logic Design Worksheet",
+        "description": "Design a 4-bit adder and show truth tables",
+        "dueDate": "2026-02-22"
+      },
+      {
+        "id": 5,
+        "title": "Microcontrollers Mini Project",
+        "description": "Outline the architecture of an embedded control unit",
+        "dueDate": "2026-03-05"
+      },
+      {
+        "id": 6,
+        "title": "VLSI Reading",
+        "description": "Summarize CMOS scaling challenges",
+        "dueDate": "2026-03-10"
+      }
+    ]
+  },
+  {
+    "classroomCode": "MAT150",
+    "className": "Applied Mathematics",
+    "assignments": [
+      {
+        "id": 7,
+        "title": "Calculus Problem Set",
+        "description": "Solve definite integrals using substitution",
+        "dueDate": "2026-02-21"
+      },
+      {
+        "id": 8,
+        "title": "Linear Algebra Quiz Prep",
+        "description": "Explain eigenvalues with a real-world example",
+        "dueDate": "2026-02-27"
+      },
+      {
+        "id": 9,
+        "title": "Statistics Assignment",
+        "description": "Interpret confidence intervals for sample data",
+        "dueDate": "2026-03-03"
       }
     ]
   }

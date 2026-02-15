@@ -4,5 +4,29 @@
     "email": "student1@gmail.com",
     "password": "123456",
     "name": "Rahul Sharma"
+  },
+  {
+    "id": 2,
+    "email": "ananya.patel@college.edu",
+    "password": "welcome2026",
+    "name": "Ananya Patel"
+  },
+  {
+    "id": 3,
+    "email": "arjun.mehta@college.edu",
+    "password": "classroom42",
+    "name": "Arjun Mehta"
+  },
+  {
+    "id": 4,
+    "email": "sneha.iyer@college.edu",
+    "password": "aiassist",
+    "name": "Sneha Iyer"
+  },
+  {
+    "id": 5,
+    "email": "rishirajnatj@gmail.com",
+    "password": "rishi123",
+    "name": "Rishiraj Debnath"
   }
 ]

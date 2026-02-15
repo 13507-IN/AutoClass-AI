@@ -7,22 +7,12 @@ const navItems = [
   { label: "Classrooms", href: "/classrooms" }
 ];
 
-export default function Sidebar({ open, onClose, onLogout }) {
+export default function Sidebar({ onLogout }) {
   const router = useRouter();
 
   return (
-    <>
-      <div
-        className={`fixed inset-0 bg-black/60 backdrop-blur-sm transition md:hidden ${
-          open ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
-        onClick={onClose}
-      />
-      <aside
-        className={`glass fixed left-4 top-4 z-30 flex h-[calc(100vh-2rem)] w-64 flex-col justify-between rounded-3xl p-6 transition md:static md:translate-x-0 ${
-          open ? "translate-x-0" : "-translate-x-[110%]"
-        }`}
-      >
+    <aside className="glass w-full rounded-3xl p-6 md:fixed md:left-6 md:top-6 md:z-30 md:h-[calc(100vh-3rem)] md:w-64">
+      <div className="flex h-full flex-col justify-between gap-10">
         <div className="space-y-8">
           <div className="space-y-1">
             <div className="text-xs uppercase tracking-[0.3em] text-white/50">AutoClass</div>
@@ -40,7 +30,6 @@ export default function Sidebar({ open, onClose, onLogout }) {
                       ? "bg-white/20 text-white shadow-glow"
                       : "text-white/70 hover:text-white hover:bg-white/10"
                   }`}
-                  onClick={onClose}
                 >
                   <span>{item.label}</span>
                   <span className={`h-2 w-2 rounded-full ${active ? "bg-accent" : "bg-white/30"}`} />
@@ -53,7 +42,7 @@ export default function Sidebar({ open, onClose, onLogout }) {
         <button type="button" className="btn-ghost w-full" onClick={onLogout}>
           Logout
         </button>
-      </aside>
-    </>
+      </div>
+    </aside>
   );
 }

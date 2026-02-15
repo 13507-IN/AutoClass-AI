@@ -13,6 +13,7 @@ export default function ClassroomsPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [fallbackNote, setFallbackNote] = useState(false);
+  const [permissionPrompt, setPermissionPrompt] = useState(false);
 
   useEffect(() => {
     if (activeClassroom) {
@@ -21,10 +22,28 @@ export default function ClassroomsPage() {
     }
   }, [activeClassroom]);
 
-  const handleFetch = async () => {
+  const handleFetch = () => {
+    if (loading) {
+      return;
+    }
+    setError("");
+    setFallbackNote(false);
+    setPermissionPrompt(true);
+  };
+
+  const handlePermission = async (granted) => {
+    setPermissionPrompt(false);
+
+    if (!granted) {
+      setError("Permission denied. Please allow access to fetch classroom data.");
+      return;
+    }
+
     setLoading(true);
     setError("");
     setFallbackNote(false);
+
+    await new Promise((resolve) => setTimeout(resolve, 10000));
 
     const result = await fetchClassroom(code);
     if (result.error) {
@@ -42,6 +61,26 @@ export default function ClassroomsPage() {
   return (
     <AppLayout title="Classrooms">
       <div className="grid gap-6">
+        {permissionPrompt && (
+          <>
+            <div className="fixed inset-0 z-40 bg-slate-950/70 backdrop-blur-sm" />
+            <div className="fixed left-1/2 top-1/2 z-50 w-[320px] -translate-x-1/2 -translate-y-1/2 space-y-3 rounded-2xl border border-white/10 bg-slate-950/90 p-4 shadow-soft">
+              <div className="text-sm font-semibold">Google Classroom Permission</div>
+              <p className="text-xs text-white/70">
+                AutoClass AI wants to access your classroom assignments. Allow this request?
+              </p>
+              <div className="flex gap-2">
+                <button type="button" className="btn-primary text-xs" onClick={() => handlePermission(true)}>
+                  Allow
+                </button>
+                <button type="button" className="btn-secondary text-xs" onClick={() => handlePermission(false)}>
+                  Deny
+                </button>
+              </div>
+            </div>
+          </>
+        )}
+
         <GlassCard className="space-y-4">
           <div>
             <h2 className="text-xl font-semibold">Join a classroom</h2>
@@ -56,16 +95,21 @@ export default function ClassroomsPage() {
               value={code}
               onChange={(event) => setCode(event.target.value)}
             />
-            <button type="button" className="btn-primary" onClick={handleFetch}>
-              {loading ? (
-                <>
-                  <Spinner /> Fetching
-                </>
-              ) : (
-                "Fetch Assignments"
-              )}
+            <button
+              type="button"
+              className="btn-primary"
+              onClick={handleFetch}
+              disabled={loading || permissionPrompt}
+            >
+              Fetch Assignments
             </button>
           </div>
+          {loading && (
+            <div className="flex items-center gap-3 text-sm text-white/70">
+              <Spinner />
+              Loading data from Google Classroom...
+            </div>
+          )}
           {error && <div className="text-sm text-rose-200">{error}</div>}
           {fallbackNote && (
             <div className="text-xs text-white/50">
