@@ -1,0 +1,20 @@
+[
+  {
+    "classroomCode": "CSE101",
+    "className": "Computer Science 101",
+    "assignments": [
+      {
+        "id": 1,
+        "title": "Data Structures Assignment",
+        "description": "Explain Linked List with examples",
+        "dueDate": "2026-02-20"
+      },
+      {
+        "id": 2,
+        "title": "DBMS Homework",
+        "description": "Explain normalization forms",
+        "dueDate": "2026-02-25"
+      }
+    ]
+  }
+]
